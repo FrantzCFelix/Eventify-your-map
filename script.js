@@ -4,7 +4,7 @@ var eventfulApiKey = config.eventful_api_key;
 
 
 $.ajax({
-    url: "http://api.eventful.com/json/events/search?keywords=music&location=Singapore&app_key=7xvLDCCDGL5MnWLF",
+    url: "http://api.eventful.com/json/events/search?keywords=music&location=Singapore&app_key=BLG28fCFksPJcL7s",
     method: 'GET'
    })
     // After the data comes back from the API
