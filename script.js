@@ -13,5 +13,4 @@ $.ajax({
     // After the data comes back from the API
     .then(function(response) {
         console.log(response);
-      
     });
