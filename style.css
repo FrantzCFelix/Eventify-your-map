@@ -4,4 +4,13 @@
 
 .columns{
     margin-top:20px;
+    margin-left: 10%;
+    
 }
+
+.column{
+    display: flexbox;
+   justify-content: space-around;
+}
+
+
