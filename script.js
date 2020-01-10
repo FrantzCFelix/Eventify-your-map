@@ -9,12 +9,12 @@ var currentDate = "2020-02-09T21:37:00Z";//moment().format("YYYY MM DD" )
 
 console.log(currentDate);
 
-$.ajax({
+// $.ajax({
     
-    url: "https://app.ticketmaster.com/discovery/v2/events?apikey="+ticketmasterApiKey+"&locale=*&startDateTime="+currentDate, //'https://app.ticketmaster.com/discovery/v2/events.json?locale=*&startDateTime='+currentDate+'countryCode=US&apikey='+ticketmasterApiKey,
-    method: 'GET'
-   })
-    // After the data comes back from the API
-    .then(function(response) {
-        console.log(response);
-    });
+//    url: "https://app.ticketmaster.com/discovery/v2/events?apikey="+ticketmasterApiKey+"&locale=*&startDateTime="+currentDate, //'https://app.ticketmaster.com/discovery/v2/events.json?locale=*&startDateTime='+currentDate+'countryCode=US&apikey='+ticketmasterApiKey,
+//     method: 'GET'
+//    })
+//     // After the data comes back from the API
+//     .then(function(response) {
+//         console.log(response);
+//     });
