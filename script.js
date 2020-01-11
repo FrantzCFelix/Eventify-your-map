@@ -9,50 +9,19 @@ var city = "";
 var keyword = "";
 var radius = "";
 
-/// momentJS
-//MomemtJS display
-//var momentInterval = setInterval(function() {
-//console.log(moment().format('YYYY-MM-DD'));
-//});
-
-/// create beginning date for search
-function editStartDate() {
-  console.log("start date");
-  var date = new Date($("#startDate").val());
-  var day = ("0" + date.getDate()).slice(-2);
-  var month = ("0" + (date.getMonth() + 1)).slice(-2);
-  var year = date.getFullYear();
-  var startDateTime = [year, month, day].join("-") + "T23:59:00Z";
-  console.log(startDateTime);
-  
-
-  ///if ($('#startDate').val() === null) {
-  ///startDateTime = moment().format('YYYY-MM-DD') + "T00:00:00Z";}
-}
-
-/// create end date for search
-function editEndDate() {
-  console.log("start date");
-  var date = new Date($("#endDate").val());
-  var day = ("0" + date.getDate()).slice(-2);
-  var month = ("0" + (date.getMonth() + 1)).slice(-2);
-  var year = date.getFullYear();
-  var endDateTime = [year, month, day].join("-") + "T23:59:00Z";
-  console.log(endDateTime);
-}
-
 $("form").on("submit", function(event) {
   event.preventDefault();
   console.log("search button was clicked");
 
-  /// create city, keywords, and mile radius for search
+  /// create  dates, city, keywords, and mile radius for search
+  var startDateTime = $("#startDate").val() + "T00:00:00Z";
+  var endDateTime = $("#endDate").val() + "T23:59:00Z";
   city = $("#location").val();
   keyword = $("#description").val();
   radius = $("#radius").val();
 
-  editStartDate();
-  editEndDate();
-
+  console.log(startDateTime);
+  console.log(endDateTime);
   console.log(city);
   console.log(keyword);
   console.log(radius);
