@@ -11,14 +11,14 @@
     <script src="https://kit.fontawesome.com/c9c3a0343e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Eventify Your Map</title>
-    
+
 </head>
 
 <body>
-    
+
 
     </script>
-    <section class="hero is-small is-primary">
+    <section id="header" class="hero is-small">
         <!-- Hero head: will stick at the top -->
         <div class="hero-head">
             <nav class="navbar">
@@ -52,50 +52,52 @@
             </nav>
 
         </div>
-        
-        <div class="columns">
-            <div class="field has-addons">
-                <div class="control">
-                  <input class="input" type="text" placeholder="Find a event">
+        <div class="container is-fluid">
+            <div class="columns">
+                <div class="column is-8">
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Find a event">
+                    </div>
+                    <div class="control">
+                        <a class="button is-light">
+                            <i class="fas fa-search" style="color:#781742 ;"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="control">
-                  <a class="button is-light">
-                    <i class="fas fa-search" style="color:orange;"></i>
-                  </a>
+                <div id="inputField" class="column is-4">
+                    <div class="field">
+                        <div class="control has-icons-left">
+                            <input class="input is-medium" type="text" placeholder="Date">
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-calendar" style="color:orange;"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control has-icons-left">
+                            <input class="input is-medium" type="text" placeholder="Budget">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-dollar-sign" style="color:orange;"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control has-icons-left">
+                            <input class="input is-medium" type="text" placeholder="Place">
+                            <span class="icon is-medium is-left">
+                                <i class="fa fa-map-marker" style="color:orange;"></i>
+
+                            </span>
+                        </div>
+                        <div>
+                            <button class="button is-white"><i class="fas fa-arrow-right fa-2x" style="color:#781742 ;"></i></button>
+                        </div>
+
+                    </div>
                 </div>
-              </div>
-        <div id= "infoInput" class="column">
-            <div class="field">
-                <div class="control has-icons-left">
-                    <input class="input is-medium" type="text" placeholder="Date">
-                    <span class="icon is-small is-left">
-                        <i class="fa fa-calendar" style="color:orange;"></i>
-                    </span>
-                </div>
-            </div>
-            <div class="field">
-                <div class="control has-icons-left">
-                    <input class="input is-medium" type="text" placeholder="Budget">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-dollar-sign" style="color:orange;"></i>
-                    </span>
-                </div>
-            </div>
-            <div class="field">
-                <div class="control has-icons-left">
-                    <input class="input is-medium" type="text" placeholder="Place">
-                    <span class="icon is-medium is-left">
-                        <i class="fa fa-map-marker" style="color:orange;"></i>
-                        
-                    </span>
-                </div>
-                <div class="buttons">
-                    <button class="button is-warning"><i class="fas fa-search" style="color:red;"></i></button>
-                  </div>
-                  
             </div>
         </div>
-    </div>
+
 
 
         <!-- Hero content: will be in the middle -->
@@ -104,28 +106,22 @@
                 <h1 class="title">
                     Eventify Your Map
                 </h1>
-                <h2 class="subtitle">
-                    Subtitle
-                </h2>
             </div>
         </div>
     </section>
+    <!-- Start of Carousel -->
     <section class="hero is-medium has-carousel">
         <div id="carousel-demo" class="hero-carousel">
             <div class="item-1">
-                <!-- Slide Content -->
-                
-                <img class="is-background" src="assets/concert.webp" alt="" width="720" height="310"/>
-                
+                <img class="is-background" src="assets/concert.webp" alt="" width="720" height="310" />
+
             </div>
             <div class="item-2">
                 <img class="is-background" src="assets/concert2.jpeg" alt="" width="720" height="310" />
-                
+
             </div>
             <div class="item-3">
                 <img class="is-background" src="assets/concert4.jpg" alt="" width="720" height="310" />
-                
-                <!-- Slide Content -->
             </div>
         </div>
         <div class="hero-head"></div>
@@ -134,12 +130,14 @@
     </section>
     <!-- End Hero Carousel -->
 
-    
 
 
 
-    <div id="mapImage">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.989888195616!2d-122.32271258447007!3d47.606886295951625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906b5eb144ff3d%3A0xb62ff403eef55c5d!2sSharetea!5e0!3m2!1sen!2sus!4v1578633836844!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
+    <div id="mapImage" class="is-mobile">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.989888195616!2d-122.32271258447007!3d47.606886295951625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906b5eb144ff3d%3A0xb62ff403eef55c5d!2sSharetea!5e0!3m2!1sen!2sus!4v1578633836844!5m2!1sen!2sus"
+            width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
     </div>
     <div id="eventDetail"></div>
 
