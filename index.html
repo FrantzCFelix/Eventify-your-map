@@ -18,7 +18,7 @@
     
 
     </script>
-    <section class="hero is-small is-primary is-light-bold">
+    <section class="hero is-small is-primary">
         <!-- Hero head: will stick at the top -->
         <div class="hero-head">
             <nav class="navbar">
@@ -52,14 +52,19 @@
             </nav>
 
         </div>
+        
         <div class="columns">
-        <div class="column">
-            <div class="control">
-                <input class="input" type="text" placeholder="Search Event">
-                <button class="button is-info"><i class="fa fa-search" aria-hidden="true"></i></button>
-            </div>
-        </div>
-        <div class="column">
+            <div class="field has-addons">
+                <div class="control">
+                  <input class="input" type="text" placeholder="Find a event">
+                </div>
+                <div class="control">
+                  <a class="button is-light">
+                    <i class="fas fa-search" style="color:orange;"></i>
+                  </a>
+                </div>
+              </div>
+        <div id= "infoInput" class="column">
             <div class="field">
                 <div class="control has-icons-left">
                     <input class="input is-medium" type="text" placeholder="Date">
@@ -84,6 +89,10 @@
                         
                     </span>
                 </div>
+                <div class="buttons">
+                    <button class="button is-warning"><i class="fas fa-search" style="color:red;"></i></button>
+                  </div>
+                  
             </div>
         </div>
     </div>
@@ -129,7 +138,9 @@
 
 
 
-    <div id="mapImage"></div>
+    <div id="mapImage">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.989888195616!2d-122.32271258447007!3d47.606886295951625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906b5eb144ff3d%3A0xb62ff403eef55c5d!2sSharetea!5e0!3m2!1sen!2sus!4v1578633836844!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+    </div>
     <div id="eventDetail"></div>
 
 
