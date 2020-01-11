@@ -1,0 +1,18 @@
+.has-bg-img { 
+    background: url('./assets/concert5.jpeg'); 
+    background-size:cover; 
+}
+
+.title{
+    color:white;
+    font-size: 100px;
+}
+.subtitle{
+    color:white;
+    font-size:50px;
+    font-weight:40px;
+}
+.fab.fa-reddit-alien.fa-lg{
+    margin-left: 10px;
+    color: tomato;
+}
