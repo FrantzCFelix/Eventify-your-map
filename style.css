@@ -1,16 +1,38 @@
-.input{
-    width:200px;
+.title{
+    color: white;
+    font-size: 75px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight:800;
 }
 
-.columns{
-    margin-top:20px;
-    margin-left: 10%;
+#header{
+    background-color:#E2C0BB ;
     
 }
 
-.column{
-    display: flexbox;
-   justify-content: space-around;
+#mapImage{
+   margin-top: 10px;
+   margin-left: 10px;
 }
 
 
+.column{
+    margin-top: 20px;
+    display: flex;   
+}
+
+#inputField{
+    display: block;
+    background-color:lightgrey;
+    
+   
+}
+
+.button.is-white{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.input{
+    color:#A76A49 ;
+}
