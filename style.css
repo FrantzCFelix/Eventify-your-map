@@ -1,25 +1,12 @@
-.input{
-    width:300px;
-   
+.title{
+    color: white;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
 }
-
-.columns{
-    margin-top:40px;
-    margin-left: 50px;
+#header{
+    background-color:#E2C0BB ;
     
 }
-
-.column{
-    flex-grow: unset;
-
-}
-
-#infoInput{
-    background-color: white;
-    margin-left:300px;
-
-}
-
 
 #mapImage{
    margin-top: 10px;
@@ -27,3 +14,23 @@
 }
 
 
+.column{
+    margin-top: 20px;
+    display: flex;   
+}
+
+#inputField{
+    display: block;
+    background-color: white;
+    position: relative;
+   
+}
+
+.button.is-white{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.input{
+    color:#A76A49 ;
+}
