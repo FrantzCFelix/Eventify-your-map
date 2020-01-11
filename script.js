@@ -48,7 +48,7 @@ function getMapMarkers(ajaxResponse) {
         latLngObj.lng = parseFloat(ajaxResponse._embedded.events[i]._embedded.venues[0].location.longitude);
         mapMarker.push(latLngObj);
     }
-    console.log(mapMarker);
+   //console.log(mapMarker);
     return mapMarker;
 }
 
