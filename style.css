@@ -1,20 +1,29 @@
 .input{
-    width:200px;
+    width:300px;
+   
 }
 
 .columns{
-    margin-top:20px;
-    margin-left: 10%;
+    margin-top:40px;
+    margin-left: 50px;
     
 }
 
 .column{
-    display: flexbox;
-   justify-content: space-around;
+    flex-grow: unset;
+
 }
 
 #infoInput{
     background-color: white;
+    margin-left:300px;
+
+}
+
+
+#mapImage{
+   margin-top: 10px;
+   margin-left: 10px;
 }
 
 
