@@ -1,7 +1,8 @@
+/// variables needed for API keys
 var googleMapsJSApikey = config.google_maps_javaScript_api_key;
-var eventbriteApiKey = config.eventbrite_api_key;
-var eventfulApiKey = config.eventful_api_key;
 var ticketmasterApiKey = config.ticket_master_api_key;
+
+/// variables needed for userCreatedURL
 var startDateTime = "";
 var endDateTime = "";
 var city = "";
@@ -13,32 +14,7 @@ var marker;
 var markerArr;
 
 
-function editStartDate() {
 
-    $('#searchBtn').on('click', function () {
-        var date = new Date($('#startDate').val());
-        day = ('0' + (date.getDate() + 1)).slice(-2);
-        month = ('0' + (date.getMonth() + 1)).slice(-2);
-        year = date.getFullYear();
-        startDateTime = ([year, month, day].join('-') + 'T00:00:00Z');
-        console.log(startDateTime)
-    });
-}
-editStartDate();
-
-function editEndDate() {
-
-    $('#searchBtn').on('click', function () {
-        var date = new Date($('#endDate').val());
-        day = ('0' + (date.getDate() + 1)).slice(-2);
-        month = ('0' + (date.getMonth() + 1)).slice(-2);
-        year = date.getFullYear();
-        endDateTime = ([year, month, day].join('-') + 'T23:59:00Z');
-        console.log(endDateTime)
-    });
-
-}
-editEndDate();
 
 function getMapMarkers(ajaxResponse) {
     var mapMarker = [];
@@ -63,31 +39,48 @@ function initMap() {
         marker = new google.maps.Marker({ position: markerArr[i], map: map });
     }
 }
+$("form").on("submit", function(event) {
+  event.preventDefault();
+  console.log("search button was clicked");
 
+  /// create  dates, city, keywords, and mile radius for search
+  var startDateTime = $("#startDate").val() + "T00:00:00Z";
+  var endDateTime = $("#endDate").val() + "T23:59:00Z";
+  city = $("#location").val();
+  keyword = $("#description").val();
+  radius = $("#radius").val();
 
+  console.log(startDateTime);
+  console.log(endDateTime);
+  console.log(city);
+  console.log(keyword);
+  console.log(radius);
 
-$('#searchBtn').on('click', function () {
-    city = $('#location').val();
-    keyword = $('#description').val();
-    radius = $('#radius').val();
-    console.log(radius)
-    console.log(keyword)
-    console.log(city)
-});
+  /// build the URL with user input
+  var queryURL =
+    "https://app.ticketmaster.com/discovery/v2/events?apikey=" +
+    ticketmasterApiKey +
+    "&keyword=" +
+    keyword +
+    "&radius=" +
+    radius +
+    "&unit=miles&locale=*&startDateTime=" +
+    startDateTime +
+    "&endDateTime=" +
+    endDateTime +
+    "&city=" +
+    city;
+  console.log(queryURL);
 
-$('#searchBtn').on('click', function () {
-
-    var queryURL = 'https://app.ticketmaster.com/discovery/v2/events?apikey=' + ticketmasterApiKey + '&keyword=' + keyword + '&radius=' + radius + '&unit=miles&locale=*&startDateTime=' + startDateTime + '&endDateTime=' + endDateTime + '&city=' + city
-    console.log(queryURL);
-
-    $.ajax({
-        url: queryURL,
-        method: 'GET'
-    })
-        // After the data comes back from the API
-        .then(function (response) {
-            // console.log(response);
-            markerArr = getMapMarkers(response);
-            initMap();
-        });
+  /// GET request to load data
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+    // After the data comes back from the API
+    .then(function(response) {
+      console.log(response);
+      markerArr = getMapMarkers(response);
+      initMap();
+    });
 });
