@@ -9,19 +9,6 @@ var city = "";
 var keyword = "";
 var radius = "";
 
-$("form").on("submit", function(event) {
-  event.preventDefault();
-  console.log("search button was clicked");
-
-  /// create  dates, city, keywords, and mile radius for search
-  var startDateTime = $("#startDate").val() + "T00:00:00Z";
-  var endDateTime = $("#endDate").val() + "T23:59:00Z";
-  city = $("#location").val();
-  keyword = $("#description").val();
-  radius = $("#radius").val();
-
-
-
 //typewriter function
   var str = "<p>Are You Ready To Explore ?</p>",
   i = 0,
@@ -68,6 +55,19 @@ setInterval(hand, 2000);
   // console.log(radius);
 
   /// build the URL with user input
+
+  $("form").on("submit", function(event) {
+    event.preventDefault();
+    console.log("search button was clicked");
+  
+    /// create  dates, city, keywords, and mile radius for search
+    var startDateTime = $("#startDate").val() + "T00:00:00Z";
+    var endDateTime = $("#endDate").val() + "T23:59:00Z";
+    city = $("#location").val();
+    keyword = $("#description").val();
+    radius = $("#radius").val();
+
+    
   var queryURL =
     "https://app.ticketmaster.com/discovery/v2/events?apikey=" +
     ticketmasterApiKey +
