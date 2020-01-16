@@ -113,7 +113,7 @@
 
 
 
-                    <form id="search">
+                    <form>
                         <button class="button"><i class="far fa-hand-point-right fa-2x"
                                 style="color:#504B4C ;"></i></button>
                     </form>
@@ -125,27 +125,35 @@
 
 
 
-        <!-- Hero content: will be in the middle -->
+    
 
     </section>
     <!-- Start of Carousel -->
     <section class="hero is-medium has-carousel">
-        <div id="carousel-demo" class="hero-carousel">
+        <div id="carousel-demo" class="hero-carousel">          
             <div class="item-1">
-                <img class="is-background" src="assets/concert.webp" alt="" width="720" height="310" />
-
+                <img class="is-background" src="./assets/PT01L-Get-Ready-Color-Run-Splash-Color-Run-Tropicolor.jpg" alt="" width="720" height="330" />
             </div>
             <div class="item-2">
-                <img class="is-background" src="assets/concert2.jpeg" alt="" width="720" height="310" />
-
+                <img class="is-background" src="./assets/jazz.jpg" alt="" width="720" height="330" />
             </div>
             <div class="item-3">
-                <img class="is-background" src="assets/concert4.jpg" alt="" width="720" height="310" />
+                <img class="is-background" src="./assets/mainimage4.jpg" alt="" width="720" height="330" />
+
+            </div>
+            <div class="item-4">
+                <img class="is-background" src="./assets/comedy.jpg" alt="" width="720" height="330" />
+            </div>
+            <div class="item-5">
+                <img class="is-background" src="./assets/yoga.jpg" alt="" width="720" height="330" />
+            </div>
+            <div class="item-6">
+                <img class="is-background" src="./assets/disneyparade.jpg" alt="" width="720" height="330" />
             </div>
         </div>
-        <div class="hero-head"></div>
+        
         <div class="hero-body"></div>
-        <div class="hero-foot"></div>
+        
     </section>
     <!-- End Hero Carousel -->
 
@@ -191,7 +199,6 @@
 
 
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type='text/javascript' src='config.js'></script>
@@ -199,11 +206,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
     
     <script>
-        bulmaCarousel.attach('#carousel-demo', {
-            slidesToScroll: 1,
-            slidesToShow: 2
-        });
 
+        bulmaCarousel.attach('#carousel-demo', {
+            autoplay:true,
+            autoplaySpeed:2000,
+            loop:true,
+            slidesToShow: 2,
+
+        });
+        
     </script>
 </body>
 
