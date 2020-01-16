@@ -16,8 +16,6 @@
 
 <body>
 
-
-    </script>
     <section id="header" class="hero is-small">
         <!-- Hero head: will stick at the top -->
         <div class="hero-head">
@@ -52,54 +50,29 @@
             </nav>
 
         </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <div class="columns">
-        <div class="column">
-            <div class="control">
-                <input class="input" type="text" placeholder="Search Event">
-                <button class="button is-info"><i class="fa fa-search" aria-hidden="true"></i></button>
-            </div>
-        </div>
-        <div class="column">
-            <div class="field">
-                <div class="control has-icons-left">
-                    <input class="input is-medium" type="date" placeholder="Date">
-                    <span class="icon is-small is-left">
-                        <i class="fa fa-calendar" style="color:orange;"></i>
-                    </span>
-                </div>
-            </div>
-            <div class="field">
-                <div class="control has-icons-left">
-                    <input class="input is-medium" type="text" placeholder="Budget">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-dollar-sign" style="color:orange;"></i>
-                    </span>
-        <div class="container is-fluid">
-=======
-=======
->>>>>>> d3d58bb243ccffb9c1250bbe3581a7fa25cbf6d0
         <div class="container">
->>>>>>> af1109d491ef96147e3ced6ac7d1f02f0dc62c5e
             <div class="columns">
                 <div class="hero-body">
                     <div class="container has-text-left">
                         <h1 class="title">
                             THE PARTY
-                            <br>
-                            STARTS NOW                   
+                            <h1 class="title">
+                                STARTS
+                            </h1>
+                            <h1 class="title">
+                                NOW
+                            </h1>
                         </h1>
                     </div>
                 </div>
-                
+
                 <div id="inputField" class="column is-6 is-centered">
                     <div class="field">
                         <div class="control has-icons-left">
                             <input class="input is-medium" id="description" type="text" placeholder="Search Events">
                             <span class="icon is-medium is-left">
                                 <i class="fa fa-search" style="color:orange;"></i>
-                        
+
                             </span>
                         </div>
                     </div>
@@ -136,23 +109,24 @@
                             </span>
                         </div>
                     </div>
-                    
-                    
-                   
 
-                        <form>
-                            <button class="button is-white"><i class="fas fa-arrow-right fa-2x" style="color:#781742 ;"></i></button>
-                        </form>
 
-                    </div>
-                    
+
+
+                    <form id="search">
+                        <button class="button"><i class="far fa-hand-point-right fa-2x"
+                                style="color:#504B4C ;"></i></button>
+                    </form>
+
                 </div>
+
             </div>
+        </div>
 
 
 
         <!-- Hero content: will be in the middle -->
-        
+
     </section>
     <!-- Start of Carousel -->
     <section class="hero is-medium has-carousel">
@@ -179,22 +153,51 @@
 
 
 
-    <div id="mapImage" class="is-mobile">
+    <div id="eventDetail" class="columns">
+        <div class="column half">
+            <ul>
+            <li>Event:</li>            
+            <li>Date:</li>            
+        </ul>
+    </div>
+    <div class="column is-half">
+        <ul>
+            <li>Price:</li>           
+            <li>Venue:</li>
+            <li>Location:</li>
+            </ul>
+        </div>  
+    </div>
+
+    <div class="columns">
+        <div class="column half">
+        <figure id="eventpic" class="image">
+            <img src="./assets/concert.webp" alt="">
+        </figure>
+        <figure id="venuepic" class="image">
+            <img src="./assets/concert.webp" alt="">
+        </figure>
+        </div>
+    </div>
+
+
+    <div id="mapImage" class="is-mobile has-text-centered">
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.989888195616!2d-122.32271258447007!3d47.606886295951625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906b5eb144ff3d%3A0xb62ff403eef55c5d!2sSharetea!5e0!3m2!1sen!2sus!4v1578633836844!5m2!1sen!2sus"
             width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
     </div>
-    <div id="eventDetail"></div>
 
 
 
 
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type='text/javascript' src='config.js'></script>
     <script type='text/javascript' src='script.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
+    
     <script>
         bulmaCarousel.attach('#carousel-demo', {
             slidesToScroll: 1,
