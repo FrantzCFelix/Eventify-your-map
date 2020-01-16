@@ -47,5 +47,14 @@
 
 #eventDetail{
     background-color:#E0D8C5;
-    height:300px;
+    height:280px;
+}
+
+.hero-body{
+    height: 300px;
+}
+
+li{
+    font-size: 30px;
+    
 }
