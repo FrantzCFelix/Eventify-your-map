@@ -15,34 +15,59 @@ var radius = "";
 var map;
 var seattle = { lat: 47.6062, lng: -122.3321 };
 var tokyo = {lat: 35.6762 , lng: 139.6503};
-var userLocationCoord = {lat: 0 , lng: 0};
+var userLocationCoord = tokyo;//set to tokyo to test desired behavior
 var marker;
 var markerArr;
 
 /**********************/
- initMap();
+/* Promise declaeration */
+var locationPromise = new Promise(function(resolve, reject){
 
-//If browser supports geolocation
-if (navigator.geolocation) {
+  if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
-      };
-      map.setCenter(pos);
+      }
       userLocationCoord.lat = pos.lat;
       userLocationCoord.lng = pos.lng;
-
-    }, function() {
+      resolve(userLocationCoord);
+    },function() {
       handleLocationError(true);
+      console.error("Location Denied");
+      reject("promise Location Failed");
     });
-  } else {
-    // Browser doesn't support Geolocation
+  }
+  else
+  {
     handleLocationError(false);
+    reject("promise Location Failed");    
   }
 
+});
 
+/****************************/
 
+locationPromise.then(function(result){
+  //Should try to put this in a promise aysny-await block in search event listener to get city into the queryUrl-FF
+  //Right now this relies on the ajax call finishing before the user inputs information and city is equal to the users location by default- FF
+  $.ajax({
+    url: "https://maps.googleapis.com/maps/api/geocode/json?latlng="+result.lat+","+result.lng+"&result_type=locality&key="+googleMapsJSApikey,
+    method: "GET"
+  })
+  .then(function(response) {
+  
+    city = response.results[0].address_components[0].long_name;
+    $("#location").val(city);
+    console.log("City is equal to: " + response.results[0].address_components[0].long_name);
+   
+  });
+ 
+  console.log(result);
+}, function(err){
+  console.log(err);
+
+});
 
 $("form").on("submit", function(event) {
   event.preventDefault();
@@ -52,13 +77,9 @@ $("form").on("submit", function(event) {
   var startDateTime = $("#startDate").val() + "T00:00:00Z";
   var endDateTime = $("#endDate").val() + "T23:59:00Z";
   city = $("#location").val();
+  console.log(city);
   keyword = $("#description").val();
   radius = $("#radius").val();
-
-  // if(city==="")
-  // {
-  //     city =0; //
-  // }
 
 //   console.log(startDateTime);
 //   console.log(endDateTime);
@@ -114,21 +135,39 @@ function initMap() {
         center: tokyo,
         zoom: 11
     });
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        map.setCenter(pos);
+        userLocationCoord.lat = pos.lat;
+        userLocationCoord.lng = pos.lng;
+      }, function() {
+        handleLocationError(true);
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false);
+    }
     
 }
 function updateMap() {
     map = new google.maps.Map(document.getElementById('mapImage'), {
-        center: seattle,
+        center: city,
         zoom: 11
     });
     makeMapMarkers();
-    
 }
 function makeMapMarkers(){
     for (var i = 0; i < markerArr.length; i++) {
         marker = new google.maps.Marker({ position: markerArr[i], map: map });
     }
 }
+
+
+
 function handleLocationError(browserHasGeolocation) {
   console.error(browserHasGeolocation ?
                       'Error: The Geolocation service failed.' :
