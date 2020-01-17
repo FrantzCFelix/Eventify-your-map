@@ -133,7 +133,7 @@ $("form").on("submit", function (event) {
         updateMap();
       });
 
-      console.log(result);
+    console.log(result);
   });
 
   console.log(cityPromise);
@@ -144,8 +144,8 @@ $("form").on("submit", function (event) {
 
 
 
-  /// GET request to load data
- 
+/// GET request to load data
+
 
 
 //takes ticketmaster api data and extracts venue lat&lng
@@ -167,6 +167,7 @@ function initMap() {
     center: tokyo,
     zoom: 11
   });
+
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       var pos = {
@@ -191,12 +192,37 @@ function updateMap() {
     zoom: 11
   });
   makeMapMarkers();
+
+
+
 }
+
 function makeMapMarkers() {
   for (var i = 0; i < markerArr.length; i++) {
     marker = new google.maps.Marker({ position: markerArr[i], map: map });
+    marker.addListener('click', function (event) {
+     console.log(event.latLng.toJSON());
+
+     /*
+     for(var i = 0; i < eventArrOfObj.length; i++)
+     {
+     If map marker coords = eventArrOfObj[i].latLng
+      {
+        display eventArrObj[i]
+      }
+
+     }
+     
+     
+     */
+   
+    });
   }
+
 }
+
+
+
 
 
 
