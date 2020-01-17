@@ -5,14 +5,16 @@
     font-weight:800;
 }
 
+
 #header{
     background-color:#E2C0BB ;
     
 }
 
 #mapImage{
-   margin: 10px;
-   margin-left: 10px;
+    height: 500px;
+    width: 100%; 
+
 }
 
 
@@ -56,5 +58,7 @@
 
 li{
     font-size: 30px;
-    
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:#756A77;
+    margin-left: 40px;   
 }
