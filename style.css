@@ -30,6 +30,7 @@
 #inputField{
     display: block;
     background-color:lightgrey;
+    margin-bottom: 40px;
     
    
 }
@@ -41,4 +42,25 @@
 
 .input{
     color:#A76A49 ;
+}
+
+.button{
+    background-color: transparent;
+    border:0;
+    position: relative;
+    
+}
+
+#eventDetail{
+    background-color:#E0D8C5;
+    height:280px;
+}
+
+.hero-body{
+    height: 300px;
+}
+
+li{
+    font-size: 30px;
+    
 }

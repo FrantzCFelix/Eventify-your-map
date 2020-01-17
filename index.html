@@ -16,8 +16,6 @@
 
 <body>
 
-
-    </script>
     <section id="header" class="hero is-small">
         <!-- Hero head: will stick at the top -->
         <div class="hero-head">
@@ -58,19 +56,23 @@
                     <div class="container has-text-left">
                         <h1 class="title">
                             THE PARTY
-                            <br>
-                            STARTS NOW                   
+                            <h1 class="title">
+                                STARTS
+                            </h1>
+                            <h1 class="title">
+                                NOW
+                            </h1>
                         </h1>
                     </div>
                 </div>
-                
+
                 <div id="inputField" class="column is-6 is-centered">
                     <div class="field">
                         <div class="control has-icons-left">
                             <input class="input is-medium" id="description" type="text" placeholder="Search Events">
                             <span class="icon is-medium is-left">
                                 <i class="fa fa-search" style="color:orange;"></i>
-                        
+
                             </span>
                         </div>
                     </div>
@@ -107,44 +109,52 @@
                             </span>
                         </div>
                     </div>
-                    
-                    
-                   
 
-                        <form>
-                            <button class="button is-white"><i class="fas fa-arrow-right fa-2x" style="color:#781742 ;"></i></button>
-                        </form>
 
-                    </div>
-                    
+
+
+                    <form>
+                        <button class="button"><i class="far fa-hand-point-right fa-2x"
+                                style="color:#504B4C ;"></i></button>
+                    </form>
+
                 </div>
+
             </div>
            
         </div>
     </div>
 
 
-        <!-- Hero content: will be in the middle -->
-        
+    
+
     </section>
     <!-- Start of Carousel -->
     <section class="hero is-medium has-carousel">
-        <div id="carousel-demo" class="hero-carousel">
+        <div id="carousel-demo" class="hero-carousel">          
             <div class="item-1">
-                <img class="is-background" src="assets/concert.webp" alt="" width="720" height="310" />
-
+                <img class="is-background" src="./assets/PT01L-Get-Ready-Color-Run-Splash-Color-Run-Tropicolor.jpg" alt="" width="720" height="330" />
             </div>
             <div class="item-2">
-                <img class="is-background" src="assets/concert2.jpeg" alt="" width="720" height="310" />
-
+                <img class="is-background" src="./assets/jazz.jpg" alt="" width="720" height="330" />
             </div>
             <div class="item-3">
-                <img class="is-background" src="assets/concert4.jpg" alt="" width="720" height="310" />
+                <img class="is-background" src="./assets/mainimage4.jpg" alt="" width="720" height="330" />
+
+            </div>
+            <div class="item-4">
+                <img class="is-background" src="./assets/comedy.jpg" alt="" width="720" height="330" />
+            </div>
+            <div class="item-5">
+                <img class="is-background" src="./assets/yoga.jpg" alt="" width="720" height="330" />
+            </div>
+            <div class="item-6">
+                <img class="is-background" src="./assets/disneyparade.jpg" alt="" width="720" height="330" />
             </div>
         </div>
-        <div class="hero-head"></div>
+        
         <div class="hero-body"></div>
-        <div class="hero-foot"></div>
+        
     </section>
     <!-- End Hero Carousel -->
 
@@ -154,24 +164,60 @@
     <div id="mapImage">
         
 
+    <div id="eventDetail" class="columns">
+        <div class="column half">
+            <ul>
+            <li>Event:</li>            
+            <li>Date:</li>            
+        </ul>
     </div>
-    <div id="eventDetail"></div>
+    <div class="column is-half">
+        <ul>
+            <li>Price:</li>           
+            <li>Venue:</li>
+            <li>Location:</li>
+            </ul>
+        </div>  
+    </div>
+
+    <div class="columns">
+        <div class="column half">
+        <figure id="eventpic" class="image">
+            <img src="./assets/concert.webp" alt="">
+        </figure>
+        <figure id="venuepic" class="image">
+            <img src="./assets/concert.webp" alt="">
+        </figure>
+        </div>
+    </div>
+
+
+    <div id="mapImage" class="is-mobile has-text-centered">
+        
+    </div>
 
 
 
-   
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type='text/javascript' src='config.js'></script>
     <script type='text/javascript' src='script.js'></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Wxb7HnT4rc08hFfYfwrurjFkRRLSRkA&callback=initMap"
     async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
-        <script>
-        bulmaCarousel.attach('#carousel-demo', {
-            slidesToScroll: 1,
-            slidesToShow: 2
-        });
+    
+    <script>
 
+        bulmaCarousel.attach('#carousel-demo', {
+            autoplay:true,
+            autoplaySpeed:2000,
+            loop:true,
+            slidesToShow: 2,
+
+        });
+        
     </script>
   
 </body>

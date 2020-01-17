@@ -9,6 +9,8 @@ var endDateTime = "";
 var city = "";
 var keyword = "";
 var radius = "";
+var current = moment().format("YYYY-MM-DD");
+var future = moment().add(1, "years").format("YYYY-MM-DD");
 /*********************/
 
 /*google maps api vars*/
@@ -66,13 +68,22 @@ locationPromise.then(function (result) {
   console.log(result);
 });
 
-$("form").on("submit", function (event) {
+
+/// build the URL with user input
+$("form").on("submit", function(event) {
   event.preventDefault();
   console.log("search button was clicked");
 
   /// create  dates, city, keywords, and mile radius for search
   var startDateTime = $("#startDate").val() + "T00:00:00Z";
+  if (startDateTime === "T00:00:00Z") {
+    startDateTime = current + "T00:00:00Z";
+  }
   var endDateTime = $("#endDate").val() + "T23:59:00Z";
+  if (endDateTime === "T23:59:00Z") {
+    endDateTime = future + "T23:59:00Z";
+  }
+
   city = $("#location").val();
   keyword = $("#description").val();
   radius = $("#radius").val();
@@ -83,7 +94,6 @@ $("form").on("submit", function (event) {
   //   console.log(keyword);
   //   console.log(radius);
 
-  /// build the URL with user input
   var queryURL =
     "https://app.ticketmaster.com/discovery/v2/events?apikey=" +
     ticketmasterApiKey +
@@ -111,14 +121,12 @@ $("form").on("submit", function (event) {
       // After the data comes back from the API
       .then(function (response) {
         cityCoords = response.results[0].geometry.location;
-        console.log(cityCoords);
         resolve(response.results[0].geometry.location);
       });
 
     // reject("promise Location Failed");
 
   });
-  console.log(cityPromise);
   /****************************/
 
   cityPromise.then(function (result) {
@@ -128,16 +136,11 @@ $("form").on("submit", function (event) {
     })
       // After the data comes back from the API
       .then(function (response) {
-        console.log(response);
         markerArr = getMapMarkers(response);
         updateMap();
       });
-
-    console.log(result);
   });
-
-  console.log(cityPromise);
-
+ 
 });
 
 /******************************* */

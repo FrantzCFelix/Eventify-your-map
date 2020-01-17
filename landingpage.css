@@ -6,13 +6,17 @@
 .title{
     color:white;
     font-size: 100px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .subtitle{
     color:white;
     font-size:50px;
     font-weight:40px;
 }
-.fab.fa-reddit-alien.fa-lg{
-    margin-left: 10px;
-    color: tomato;
+#div1{
+    color:#082966  ;
+}
+.button{
+    font-weight: 800;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
