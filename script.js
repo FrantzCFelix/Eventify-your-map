@@ -213,8 +213,9 @@ function makeMapMarkers() {
     marker = new google.maps.Marker({ position: markerArr[i], map: map });
     marker.addListener("click", function (event) {
       markerClickLocation = event.latLng.toJSON();
-      /*var eventToDisplay =*/ findEvent(markerClickLocation, eventObjArr);
-      //displayEventInfo(eventToDisplay);
+      var eventToDisplay = findEvent(markerClickLocation, eventObjArr);
+      displayEventInfo(eventToDisplay);
+      
       
 
     });
@@ -229,7 +230,7 @@ function handleLocationError(browserHasGeolocation) {
   );
 }
 
-//function ()
+
 
 function createEventObjArr(ajaxResponse) {
 
@@ -273,11 +274,7 @@ function findEvent(markerClickCoords, eventArr)
       
      for(var i = 0; i < eventArr.length; i++)
      {
-      //  console.log(markerClickCoords.lat);
-      //  console.log(eventArr[i].eventLatLong.lat);
-      //  console.log(markerClickCoords.lng);
-      //  console.log(eventArr[i].eventLatLong.lng);
-
+      
      if (markerClickCoords.lat === eventArr[i].eventLatLong.lat && markerClickCoords.lng === eventArr[i].eventLatLong.lng )
       {
         console.log(eventArr[i]);
@@ -292,3 +289,12 @@ function findEvent(markerClickCoords, eventArr)
 
 
 
+function displayEventInfo(eventObject) {
+  $("#event").text("Event: " + eventObject.eventName);
+  $("#date").text("Date: " + eventObject.eventDate);
+  $("#eventURL").html("Get Tickets: " + eventObject.eventLink);
+  $("#venue").text("Venue: " + eventObject.eventVenue);
+  $("#address").text("Address: " + eventObject.eventAddress);
+  $("venueURL").html("Venue Info: " + eventObject.eventVenueLink);
+  $("#picEvent").attr("src", eventObject.eventImageURL);
+}
