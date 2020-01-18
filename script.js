@@ -79,6 +79,7 @@ locationPromise.then(function (result) {
 
 /// build the URL with user input
 $("form").on("submit", function (event) {
+  eventObjArr = [];
   event.preventDefault();
   console.log("search button was clicked");
 
@@ -148,8 +149,8 @@ $("form").on("submit", function (event) {
       .then(function (response) {
         markerArr = getMapMarkers(response);
         updateMap();
-      createEventObjArr(response);
-      console.log(result);
+        createEventObjArr(response);
+        console.log(result);
       });
   });
 });
@@ -169,9 +170,9 @@ function getMapMarkers(ajaxResponse) {
     latLngObj.lng = parseFloat(
       ajaxResponse._embedded.events[i]._embedded.venues[0].location.longitude
     );
-    mapMarker.push(latLngObj);    
+    mapMarker.push(latLngObj);
   }
-    return mapMarker;
+  return mapMarker;
 }
 
 function initMap() {
@@ -215,8 +216,8 @@ function makeMapMarkers() {
       markerClickLocation = event.latLng.toJSON();
       var eventToDisplay = findEvent(markerClickLocation, eventObjArr);
       displayEventInfo(eventToDisplay);
-      
-      
+
+
 
     });
   }
@@ -243,46 +244,49 @@ function createEventObjArr(ajaxResponse) {
       ajaxResponse._embedded.events[i]._embedded.venues[0].location.longitude
     );
 
+    var eName = ajaxResponse._embedded.events[i].name;
+    var lDate = ajaxResponse._embedded.events[i].dates.start.localDate;
+    var eLink = ajaxResponse._embedded.events[i].url;
+    var eVenue = ajaxResponse._embedded.events[i]._embedded.venues[0].name;
+    var eVenueLink = ajaxResponse._embedded.events[i]._embedded.venues[0].url;
+    var eAddress = ajaxResponse._embedded.events[i]._embedded.venues[0].address.line1 + " " + ajaxResponse._embedded.events[i]._embedded.venues[0].city.name +
+      ", " + ajaxResponse._embedded.events[i]._embedded.venues[0].state.name + " " + ajaxResponse._embedded.events[i]._embedded.venues[0].postalCode;
+    ajaxResponse._embedded.events[i].images[1].url;
+      var eImage = ajaxResponse._embedded.events[i].images[1].url;
+
     var eventObject = {
-      eventName: ajaxResponse._embedded.events[i].name,
-      eventDate: ajaxResponse._embedded.events[i].dates.start.localDate,
-      eventLink: ajaxResponse._embedded.events[i].url,
-      eventVenue: ajaxResponse._embedded.events[i]._embedded.venues[0].name,
-      eventVenueLink: ajaxResponse._embedded.events[i]._embedded.venues[0].url,
-      eventAddress:
-        ajaxResponse._embedded.events[i]._embedded.venues[0].address.line1 +
-        " " +
-        ajaxResponse._embedded.events[i]._embedded.venues[0].city.name +
-        ", " +
-        ajaxResponse._embedded.events[i]._embedded.venues[0].state.name +
-        " " +
-        ajaxResponse._embedded.events[i]._embedded.venues[0].postalCode,
-      eventImageURL: ajaxResponse._embedded.events[i].images[1].url,
+      eventName: eName,
+      eventDate: lDate,
+      eventLink: eLink,
+      eventVenue: eVenue,
+      eventVenueLink: eVenueLink,
+      eventAddress:eAddress,
+      eventImageURL: eImage,
       eventLatLong: latLngObj
-      
+
     };
+    console.log(eventObject);
     eventObjArr.push(eventObject);
   }
-  
+
   console.log(eventObjArr);
   return eventObjArr;
 }
 
-function findEvent(markerClickCoords, eventArr)
-{
- // var multipleEventArr = [];
-      
-     for(var i = 0; i < eventArr.length; i++)
-     {
-      
-     if (markerClickCoords.lat === eventArr[i].eventLatLong.lat && markerClickCoords.lng === eventArr[i].eventLatLong.lng )
-      {
-        console.log(eventArr[i]);
-        return  eventArr[i];
-      }
-
-     }
+function findEvent(markerClickCoords, eventArr) {
    
+  for (var i = 0; i < eventArr.length; i++) {
+    //  var multipleEventArr = eventArr.filter(function (event){
+    //   return event.eventName === eventArr[i].eventName;
+    //  });
+console.log(multipleEventArr);
+    if (markerClickCoords.lat === eventArr[i].eventLatLong.lat && markerClickCoords.lng === eventArr[i].eventLatLong.lng) {
+      console.log(eventArr[i]);
+      return eventArr[i];
+    }
+
+  }
+
 
 }
 
