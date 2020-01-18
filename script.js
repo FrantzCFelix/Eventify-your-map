@@ -13,6 +13,7 @@ var current = moment().format("YYYY-MM-DD");
 var future = moment()
   .add(1, "years")
   .format("YYYY-MM-DD");
+
 /*********************/
 
 /*google maps api vars*/
@@ -26,6 +27,15 @@ var cityCoords = tokyo;
 var eventObjArr = [];
 var markerClickLocation = { lat: 0, lng: 0 };
 /**********************/
+$('#startDate').attr({
+  dateFormat: "yy-mm-dd",
+  value:current,
+  min: current,
+ }).on("change", function(){
+  var date1=$('#startDate').val();
+  console.log(date1)
+  $('#endDate').attr({dateFormat: "yy-mm-dd",min: date1, value:current});
+ })
 
 /* Promise declaeration */
 var locationPromise = new Promise(function (resolve, reject) {
