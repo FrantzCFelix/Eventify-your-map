@@ -8,13 +8,13 @@
 - [License](#License)
 
 ## Info
-![Landing Page](./assets/home.png)   
+![Landing Page](https://github.com/FrantzCFelix/Eventify-your-map/blob/master/assets/home.PNG?raw=true)   
 Eventify Your Map is a website that give the user the ability to search for events based on a set of criteria. The user may choose to input keywords, date ranges, cities, search radius. The usere must fill out a city. All other criteria can be left blank or filled out based on how refined the user would like their results. Once the user submits their critera the map populates all the events that match the users criteria. When the user clicks on a map marker event information and an event picture populate on the website.  
 
-![Search Feature](./assets/search.png)  
+![Search Feature](https://github.com/FrantzCFelix/Eventify-your-map/blob/master/assets/search.PNG?raw=true)  
 Screenshot of the search feature that takes in user input
 
-![Map Feature](./assets/map.png)
+![Map Feature](https://github.com/FrantzCFelix/Eventify-your-map/blob/master/assets/map.PNG?raw=true)
 Screenshot of a populated map after the search feature was submited by the user.
 
 ## Technologies
@@ -54,22 +54,31 @@ For more information on Bulma click the link below.
 The Google Maps API used for this project was the JavaScript API version. The API has the ability to display an interactive map that can be customized in a variety of ways.  
 Below is code to create a new map with the user location.  
 ```javascript
-$.ajax({
-    url:
-      "https://maps.googleapis.com/maps/api/geocode/json?latlng=" +
-      result.lat +
-      "," +
-      result.lng +
-      "&result_type=locality&key=" +
-      googleMapsJSApikey,
-    method: "GET"
-  }).then(function(response) {
-    city = response.results[0].address_components[0].long_name;
-    $("#location").val(city);
-    console.log(
-      "City is equal to: " + response.results[0].address_components[0].long_name
-    );
+function initMap() {
+  map = new google.maps.Map(document.getElementById("mapImage"), {
+    center: tokyo,
+    zoom: 11
   });
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        map.setCenter(pos);
+        userLocationCoord.lat = pos.lat;
+        userLocationCoord.lng = pos.lng;
+      },
+      function() {
+        handleLocationError(true);
+      }
+    );
+  } else {
+    handleLocationError(false);
+  }
+}
 ```
 For more information on Google Maps JavaScript API click the link below.    
 [Google Maps API](https://developers.google.com/maps/documentation/javascript/tutorial)  
@@ -136,18 +145,18 @@ Below is an example of an Ajax using jQuery
   }).then(function(response) {
     city = response.results[0].address_components[0].long_name;
     $("#location").val(city);
-    console.log(
-      "City is equal to: " + response.results[0].address_components[0].long_name
-    );
-  });
-  
 ```
-For more information on Ticketmaster Discovery API click the link below.  
+For more information on jQuery click the link below.  
 [jQuery](https://jquery.com/)  
 
 ## Summary
 This website finds events for the curious user. First the user may enter a keyword that they would like to search for. It could be something specific like an artist, or broad like music festivals and comedy. The user can even choose to select nothing at all. The user then has the option to choose between a range of dates. If the user does not select dates it will default to a 1 year time frame. The user will then need to enter a city. This is the only input that must have something selected. Finally the user has the option to choose a search radius. It is a mile radius from the center of the city the user inputs.  
 Once the user has input all the desierd information the search button can be clicked. This produces map markers of events that match the users search. When the user clicks on a map marker the informataion of that particular event is then displayed on the site. An image of the event will be displayed as well.  
+
+the diagram below is a visual representation
+![Model](./assets/model.jpg) 
+
+
 
 
 
