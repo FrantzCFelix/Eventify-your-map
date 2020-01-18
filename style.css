@@ -66,5 +66,10 @@ li{
 
 #picEvent{
     width: 1000px;
-    height: 456px;
+    height: 500px;
+}
+
+#picVenue{
+    width: 1000px;
+    height: 500px;
 }
