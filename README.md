@@ -80,8 +80,12 @@ function initMap() {
   }
 }
 ```
-For more information on Google Maps JavaScript API click the link below.    
+For more information on Google Maps JavaScript API and Geolocation API click the link below.    
 [Google Maps API](https://developers.google.com/maps/documentation/javascript/tutorial)  
+[Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/start?utm_source=google&utm_medium=cpc&utm_campaign=FY18-Q2-global-demandgen-paidsearchonnetworkhouseads-cs-maps_contactsal_saf&utm_content=text-ad-none-none-DEV_c-CRE_315916118159-ADGP_Hybrid+%7C+AW+SEM+%7C+SKWS+~+Geocoding+API-KWID_43700039136946657-aud-581578347266:kwd-335278985932-userloc_9033315&utm_term=KW_%2Bgeocoder%20%2Bapi-ST_%2Bgeocoder+%2Bapi&gclid=Cj0KCQiA9orxBRD0ARIsAK9JDxRc18XHypxM7KHjlELOl0bTxcCvHzph62XrvJZKBgOW8Gg9JSyMaxoaAgPuEALw_wcB)
+
+### * W3C Geolocation API
+[W3C Geolocation](https://w3c.github.io/geolocation-api/)
 
 ### * Ticketmaster API
 The Ticketmaster Discovery API was also used for this project. This API has the ability to return event information based on a large selection of criteria.
@@ -155,8 +159,6 @@ Once the user has input all the desierd information the search button can be cli
 
 the diagram below is a visual representation
 ![Model](./assets/model.jpg) 
-
-
 
 
 
