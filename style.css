@@ -20,6 +20,12 @@
     margin-top: 20px;
     display: flex;   
 }
+#mapImage{
+    display: flexbox;
+    width: 50%;
+    height: 500px;
+    background-color: green;
+}
 
 #inputField{
     display: block;
