@@ -55,12 +55,9 @@
     height:280px;
 }
 
-.hero-body{
-    height: 300px;
-}
 
 li{
-    font-size: 30px;
+    font-size: 25px;
     color:#485A55;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     margin-left: 60px;
