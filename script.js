@@ -250,7 +250,6 @@ function makeMapMarkers() {
       {
         display eventArrObj[i]
       }
-
      }
      
      
@@ -265,4 +264,14 @@ function handleLocationError(browserHasGeolocation) {
       ? "Error: The Geolocation service failed."
       : "Error: Your browser doesn't support geolocation."
   );
+}
+
+function displayEventInfo(eventObject) {
+  $("#event").text("Event: " + eventObject.eventName);
+  $("#date").text("Date: " + eventObject.eventDate);
+  $("#eventURL").html("Get Tickets: " + eventObject.eventLink);
+  $("#venue").text("Venue: " + eventObject.eventVenue);
+  $("#address").text("Address: " + eventObject.eventAddress);
+  $("venueURL").html("Venue Info: " + eventObject.eventVenueLink);
+  $("#picEvent").attr("src", eventObject.eventImageURL);
 }
