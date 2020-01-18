@@ -23,13 +23,15 @@ var userLocationCoord = tokyo; //set to tokyo to test desired behavior
 var marker;
 var markerArr;
 var cityCoords = tokyo;
+var eventObjArr = [];
+var markerClickLocation = { lat: 0, lng: 0 };
 /**********************/
 
 /* Promise declaeration */
-var locationPromise = new Promise(function(resolve, reject) {
+var locationPromise = new Promise(function (resolve, reject) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
-      function(position) {
+      function (position) {
         var pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
@@ -38,7 +40,7 @@ var locationPromise = new Promise(function(resolve, reject) {
         userLocationCoord.lng = pos.lng;
         resolve(userLocationCoord);
       },
-      function() {
+      function () {
         handleLocationError(true);
         console.error("Location Denied");
         reject("promise Location Failed");
@@ -52,7 +54,7 @@ var locationPromise = new Promise(function(resolve, reject) {
 
 /****************************/
 
-locationPromise.then(function(result) {
+locationPromise.then(function (result) {
   //Should try to put this in a promise aysny-await block in search event listener to get city into the queryUrl-FF
   //Right now this relies on the ajax call finishing before the user inputs information and city is equal to the users location by default- FF
   $.ajax({
@@ -64,7 +66,7 @@ locationPromise.then(function(result) {
       "&result_type=locality&key=" +
       googleMapsJSApikey,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     city = response.results[0].address_components[0].long_name;
     $("#location").val(city);
     console.log(
@@ -76,7 +78,7 @@ locationPromise.then(function(result) {
 });
 
 /// build the URL with user input
-$("form").on("submit", function(event) {
+$("form").on("submit", function (event) {
   event.preventDefault();
   console.log("search button was clicked");
 
@@ -116,7 +118,7 @@ $("form").on("submit", function(event) {
   console.log(queryURL);
 
   /************************** */
-  var cityPromise = new Promise(function(resolve) {
+  var cityPromise = new Promise(function (resolve) {
     //, reject){
 
     $.ajax({
@@ -128,7 +130,7 @@ $("form").on("submit", function(event) {
       method: "GET"
     })
       // After the data comes back from the API
-      .then(function(response) {
+      .then(function (response) {
         cityCoords = response.results[0].geometry.location;
         resolve(response.results[0].geometry.location);
       });
@@ -137,15 +139,17 @@ $("form").on("submit", function(event) {
   });
   /****************************/
 
-  cityPromise.then(function(result) {
+  cityPromise.then(function (result) {
     $.ajax({
       url: queryURL,
       method: "GET"
     })
       // After the data comes back from the API
-      .then(function(response) {
+      .then(function (response) {
         markerArr = getMapMarkers(response);
         updateMap();
+      createEventObjArr(response);
+      console.log(result);
       });
   });
 });
@@ -165,28 +169,9 @@ function getMapMarkers(ajaxResponse) {
     latLngObj.lng = parseFloat(
       ajaxResponse._embedded.events[i]._embedded.venues[0].location.longitude
     );
-    mapMarker.push(latLngObj);
-
-    var eventObject = {
-      eventName: ajaxResponse._embedded.events[i].name,
-      eventDate: ajaxResponse._embedded.events[i].dates.start.localDate,
-      eventLink: ajaxResponse._embedded.events[i].url,
-      eventVenue: ajaxResponse._embedded.events[i]._embedded.venues[0].name,
-      eventVenueLink: ajaxResponse._embedded.events[i]._embedded.venues[0].url,
-      eventAddress:
-        ajaxResponse._embedded.events[i]._embedded.venues[0].address.line1 +
-        " " +
-        ajaxResponse._embedded.events[i]._embedded.venues[0].city.name +
-        ", " +
-        ajaxResponse._embedded.events[i]._embedded.venues[0].state.name +
-        " " +
-        ajaxResponse._embedded.events[i]._embedded.venues[0].postalCode,
-      eventImageURL: ajaxResponse._embedded.events[i].images[1].url,
-      eventLatLong: latLngObj
-    };
-    console.log(eventObject);
+    mapMarker.push(latLngObj);    
   }
-  return mapMarker;
+    return mapMarker;
 }
 
 function initMap() {
@@ -197,7 +182,7 @@ function initMap() {
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
-      function(position) {
+      function (position) {
         var pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
@@ -206,7 +191,7 @@ function initMap() {
         userLocationCoord.lat = pos.lat;
         userLocationCoord.lng = pos.lng;
       },
-      function() {
+      function () {
         handleLocationError(true);
       }
     );
@@ -226,21 +211,12 @@ function updateMap() {
 function makeMapMarkers() {
   for (var i = 0; i < markerArr.length; i++) {
     marker = new google.maps.Marker({ position: markerArr[i], map: map });
-    marker.addListener("click", function(event) {
-      console.log(event.latLng.toJSON());
+    marker.addListener("click", function (event) {
+      markerClickLocation = event.latLng.toJSON();
+      /*var eventToDisplay =*/ findEvent(markerClickLocation, eventObjArr);
+      //displayEventInfo(eventToDisplay);
+      
 
-      /*
-     for(var i = 0; i < eventArrOfObj.length; i++)
-     {
-     If map marker coords = eventArrOfObj[i].latLng
-      {
-        display eventArrObj[i]
-      }
-
-     }
-     
-     
-     */
     });
   }
 }
@@ -252,3 +228,67 @@ function handleLocationError(browserHasGeolocation) {
       : "Error: Your browser doesn't support geolocation."
   );
 }
+
+//function ()
+
+function createEventObjArr(ajaxResponse) {
+
+  for (var i = 0; i < ajaxResponse._embedded.events.length; i++) {
+    var latLngObj = { lat: 0, lng: 0 };
+    latLngObj.lat = parseFloat(
+      ajaxResponse._embedded.events[i]._embedded.venues[0].location.latitude
+    );
+    latLngObj.lng = parseFloat(
+      ajaxResponse._embedded.events[i]._embedded.venues[0].location.longitude
+    );
+
+    var eventObject = {
+      eventName: ajaxResponse._embedded.events[i].name,
+      eventDate: ajaxResponse._embedded.events[i].dates.start.localDate,
+      eventLink: ajaxResponse._embedded.events[i].url,
+      eventVenue: ajaxResponse._embedded.events[i]._embedded.venues[0].name,
+      eventVenueLink: ajaxResponse._embedded.events[i]._embedded.venues[0].url,
+      eventAddress:
+        ajaxResponse._embedded.events[i]._embedded.venues[0].address.line1 +
+        " " +
+        ajaxResponse._embedded.events[i]._embedded.venues[0].city.name +
+        ", " +
+        ajaxResponse._embedded.events[i]._embedded.venues[0].state.name +
+        " " +
+        ajaxResponse._embedded.events[i]._embedded.venues[0].postalCode,
+      eventImageURL: ajaxResponse._embedded.events[i].images[1].url,
+      eventLatLong: latLngObj
+      
+    };
+    eventObjArr.push(eventObject);
+  }
+  
+  console.log(eventObjArr);
+  return eventObjArr;
+}
+
+function findEvent(markerClickCoords, eventArr)
+{
+ // var multipleEventArr = [];
+      
+     for(var i = 0; i < eventArr.length; i++)
+     {
+      //  console.log(markerClickCoords.lat);
+      //  console.log(eventArr[i].eventLatLong.lat);
+      //  console.log(markerClickCoords.lng);
+      //  console.log(eventArr[i].eventLatLong.lng);
+
+     if (markerClickCoords.lat === eventArr[i].eventLatLong.lat && markerClickCoords.lng === eventArr[i].eventLatLong.lng )
+      {
+        console.log(eventArr[i]);
+        return  eventArr[i];
+      }
+
+     }
+   
+
+}
+
+
+
+
