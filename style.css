@@ -20,6 +20,11 @@
     margin-top: 20px;
     display: flex;   
 }
+#mapImage{
+    width: 100%;
+    height: 500px;
+    margin:0;
+}
 
 #inputField{
     display: block;
@@ -56,5 +61,8 @@
 
 li{
     font-size: 30px;
+    color:#485A55;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-left: 60px;
     
 }
