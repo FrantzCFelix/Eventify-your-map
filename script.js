@@ -13,6 +13,20 @@ var future = moment()
   .add(1, "years")
   .format("YYYY-MM-DD");
 
+  $('#startDate').attr({
+
+    dateFormat: "yy-mm-dd",
+    min: current,
+   }).on("change", function(){
+    var date1=$('#startDate').val();
+    console.log(date1)
+
+    $('#endDate').attr({dateFormat: "yy-mm-dd",min: date1});
+   })
+
+   //onSelect: function(date){
+    
+  
 /// build the URL with user input
 $("form").on("submit", function(event) {
   event.preventDefault();
