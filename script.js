@@ -305,6 +305,6 @@ function displayEventInfo(eventObject) {
   $("#eventURL").html("Get Tickets: " + eventObject.eventLink);
   $("#venue").text("Venue: " + eventObject.eventVenue);
   $("#address").text("Address: " + eventObject.eventAddress);
-  $("venueURL").html("Venue Info: " + eventObject.eventVenueLink);
+  $("#venueURL").html("Venue Info: " + eventObject.eventVenueLink);
   $("#picEvent").attr("src", eventObject.eventImageURL);
 }
