@@ -165,7 +165,7 @@ the diagram below is a visual representation
 
 ## Link
 
-[Here] is the deployed version(http://bit.ly/Eventify-your-map). It is currently being hosted on github pages.  
+[Here](http://bit.ly/Eventify-your-map) is the deployed version. It is currently being hosted on github pages.  
 
 
 ## Authors
