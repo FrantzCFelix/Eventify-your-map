@@ -4,6 +4,7 @@
 - [General Info](#Info)
 - [Technologies](#Technologies)
 - [Summary](#Summary)
+- [Link](#Link)
 - [Authors](#Authors)
 - [License](#License)
 
@@ -16,6 +17,8 @@ Screenshot of the search feature that takes in user input
 
 ![Map Feature](https://github.com/FrantzCFelix/Eventify-your-map/blob/master/assets/map.PNG?raw=true)
 Screenshot of a populated map after the search feature was submited by the user.
+
+[Bulma Documentation](https://bulma.io/documentation/) 
 
 ## Technologies
 ### * Bulma
@@ -160,6 +163,9 @@ Once the user has input all the desierd information the search button can be cli
 the diagram below is a visual representation
 ![Model](./assets/model.jpg) 
 
+## Link
+
+[Here] is the deployed version(http://bit.ly/Eventify-your-map). It is currently being hosted on github pages.  
 
 
 ## Authors
