@@ -2,187 +2,40 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-9">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
-    <script src="https://kit.fontawesome.com/c9c3a0343e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Eventify Your Map</title>
-
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eventify Your Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
+  <link rel="stylesheet" href="landingpage.css">
+  <script src="https://kit.fontawesome.com/c9c3a0343e.js" crossorigin="anonymous"></script>
+  </script>
 </head>
 
 <body>
-
-    <section id="header" class="hero is-small">
-        <!-- Hero head: will stick at the top -->
+  <section class="hero is-fullheight has-bg-img">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <p id="typeWriter" class="title" >             
+        </p>
         
-        <div class="container">
-            <div class="columns">
-                <div class="hero-body">
-                    <div class="container has-text-left">
-                        <h1 class="title">
-                            THE PARTY
-                            <h1 class="title">
-                                STARTS
-                            </h1>
-                            <h1 class="title">
-                                NOW
-                            </h1>
-                        </h1>
-                    </div>
-                </div>
-
-                <div id="inputField" class="column is-6 is-centered">
-                    <div class="field">
-                        <div class="control has-icons-left">
-                            <input class="input is-medium" id="description" type="text" placeholder="Search Events">
-                            <span class="icon is-medium is-left">
-                                <i class="fa fa-search" style="color:orange;"></i>
-
-                            </span>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control has-icons-left">
-                            <input class="input is-medium" id="startDate" type="date" placeholder="Date Start">
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-calendar" style="color:orange;"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control has-icons-left">
-                            <input class="input is-medium" id="endDate" type="date" placeholder="Date Finish">
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-calendar" style="color:orange;"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control has-icons-left">
-                            <input class="input is-medium" id="location" type="text" placeholder="City">
-                            <span class="icon is-medium is-left">
-                                <i class="fa fa-map-marker" style="color:orange;"></i>
-
-                            </span>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control has-icons-left">
-                            <input class="input is-medium" id="radius" type="number" placeholder="Radius">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-car" style="color:orange;"></i>
-                            </span>
-                        </div>
-                    </div>
-
-
-
-
-                    <form>
-                        <button class="button"><i class="far fa-hand-point-right fa-2x"
-                                style="color:#504B4C ;"></i></button>
-                    </form>
-
-                </div>
-
-            </div>
-           
-        </div>
+        <button class="button is-primary is-light is-large">
+          <a href="event.html">Let's GO <div id="div1" class="fas fa-lg"></div></a>
+        </button>
+      </div>
     </div>
-
-
-    
-
-    </section>
-    <!-- Start of Carousel -->
-    <section class="hero is-medium has-carousel">
-        <div id="carousel-demo" class="hero-carousel">          
-            <div class="item-1">
-                <img class="is-background" src="./assets/PT01L-Get-Ready-Color-Run-Splash-Color-Run-Tropicolor.jpg" alt="" width="720" height="100%" />
-            </div>
-            <div class="item-2">
-                <img class="is-background" src="./assets/jazz.jpg" alt="" width="720" height="100%" />
-            </div>
-            <div class="item-3">
-                <img class="is-background" src="./assets/mainimage4.jpg" alt="" width="720" height="100%" />
-
-            </div>
-            <div class="item-4">
-                <img class="is-background" src="./assets/comedy.jpg" alt="" width="720" height="100%" />
-            </div>
-            <div class="item-5">
-                <img class="is-background" src="./assets/yoga.jpg" alt="" width="720" height="100%" />
-            </div>
-            <div class="item-6">
-                <img class="is-background" src="./assets/disneyparade.jpg" alt="" width="720" height="100%" />
-            </div>
-        </div>
-        
-        <div class="hero-body"></div>
-        
-    </section>
-    <!-- End Hero Carousel -->
+  </section>
 
 
 
 
-    <div id="mapImage"></div>
-        
 
-    <div id="eventDetail" class="columns">
-        <div class="column half">
-            <ul>
-            <li id="event">Event:</li>            
-            <li id="date">Date:</li>  
-            <li id="eventURL">Get Tickets:</li> 
-        </ul>
-    </div>
-    <div class="column is-half">
-        <ul>       
-            <li id="venue">Venue:</li> </li>
-            <li id="address">Address:</li>
-            <li id="venueURL">Venue Info:</li>   
-            </ul>
-        </div>  
-    </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type='text/javascript' src='config.js'></script>
+  <script type='text/javascript' src='landingpage.js'></script>
 
-    <div class="columns">
-        <div class="column half">
-        <figure id="eventpic" class="image">
-            <img id="picEvent" src="./assets/concert.webp" alt="">
-        </figure>
-        <figure id="venuepic" class="image">
-            <img id="picVenue" src="./assets/concert.webp" alt="">
-        </figure>
-        </div>
-    </div>
 
-          
- 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type='text/javascript' src='config.js'></script>
-    <script type='text/javascript' src='script.js'></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Wxb7HnT4rc08hFfYfwrurjFkRRLSRkA&callback=initMap"
-    async defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
-    
-    <script>
 
-        bulmaCarousel.attach('#carousel-demo', {
-            autoplay:true,
-            autoplaySpeed:2000,
-            loop:true,
-            slidesToShow: 2,
-
-        });
-        
-    </script>
-  
 </body>
 
 </html>

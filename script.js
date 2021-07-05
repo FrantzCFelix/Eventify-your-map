@@ -308,3 +308,10 @@ function displayEventInfo(eventObject) {
   $("#venueURL").html("Venue Info: " + eventObject.eventVenueLink);
   $("#picEvent").attr("src", eventObject.eventImageURL);
 }
+
+
+$("#button1").click(function() {
+  $('html, body').animate({
+      scrollTop: $("#mapImage").offset().top
+  }, 1000);
+});
